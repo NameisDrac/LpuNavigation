@@ -1,0 +1,597 @@
+[
+ {
+  "test": "Data: all 115 records identical to original (names, categories, coords, flags)",
+  "status": "PASS",
+  "detail": "{\"same\":true,\"count\":115,\"withCoords\":79}\n"
+ },
+ {
+  "test": "Data: places.js file byte-identical to uploaded original",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Page loads with no console/page errors (stubbed Leaflet)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Map: 79 place markers created, every coordinate+name matches original",
+  "status": "PASS",
+  "detail": "79 markers"
+ },
+ {
+  "test": "Map: OSM street tile URL used (no subdomains)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Search \"block 34\" finds Block 34 \u2014 CSE",
+  "status": "PASS",
+  "detail": "['Block 34 \u2014 CSE']"
+ },
+ {
+  "test": "Search \"b34\" finds Block 34 \u2014 CSE",
+  "status": "PASS",
+  "detail": "['Block 34 \u2014 CSE']"
+ },
+ {
+  "test": "Search \"34\" finds Block 34 \u2014 CSE",
+  "status": "PASS",
+  "detail": "['Block 34 \u2014 CSE']"
+ },
+ {
+  "test": "Search \"libary\" finds Central Library",
+  "status": "PASS",
+  "detail": "['Central Library']"
+ },
+ {
+  "test": "Search \"bh1\" finds LPU Boys Hostel 1 \u2014 BH1",
+  "status": "PASS",
+  "detail": "['BH1 Football Ground', 'LPU Boys Hostel 1 \u2014 BH1']"
+ },
+ {
+  "test": "Search \"mess\" finds South Central Mess",
+  "status": "PASS",
+  "detail": "['South Central Mess', 'Food Factory', 'MB Food Square', 'NK Food Court']"
+ },
+ {
+  "test": "Search \"food court\" finds NK Food Court",
+  "status": "PASS",
+  "detail": "['NK Food Court', 'Food Factory', 'MB Food Square', 'South Central Mess']"
+ },
+ {
+  "test": "Search \"cricket\" finds LPU Cricket Ground",
+  "status": "PASS",
+  "detail": "['LPU Cricket Ground']"
+ },
+ {
+  "test": "Search \"hospitl\" finds Shri Baldev Raj Mittal Hospital",
+  "status": "PASS",
+  "detail": "['Block 15 \u2014 Lovely School of Hospitality', 'Shri Baldev Raj Mittal Hospital', 'Uni-Hospital']"
+ },
+ {
+  "test": "Search \"cse\" finds Block 34 \u2014 CSE",
+  "status": "PASS",
+  "detail": "['Block 34 \u2014 CSE']"
+ },
+ {
+  "test": "Search \"girls\" finds Girls Hostels \u2014 campus area reference",
+  "status": "PASS",
+  "detail": "['Girls Hostels \u2014 campus area reference']"
+ },
+ {
+  "test": "Search \"parking\" finds LPU Main Parking",
+  "status": "PASS",
+  "detail": "['LPU Main Parking', 'Law Gate']"
+ },
+ {
+  "test": "Search \"tenis\" finds Lawn Tennis Court",
+  "status": "PASS",
+  "detail": "['Lawn Tennis Court']"
+ },
+ {
+  "test": "Search \"uni mall\" finds Uni-Mall",
+  "status": "PASS",
+  "detail": "['Uni-Mall']"
+ },
+ {
+  "test": "Search \"41\" finds Block 41D",
+  "status": "PASS",
+  "detail": "['Block 41D', 'Boys Apartment 41A', 'Block 41']"
+ },
+ {
+  "test": "Search unmapped \"block 12\" shown as \"not mapped yet\"",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Search no-result empty state",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Search typo suggestion/tolerance (blok 34)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Category filter combines with search (sport + Hostels = none)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Category chip Food lists 4 food places",
+  "status": "PASS",
+  "detail": "4"
+ },
+ {
+  "test": "Clear search button resets input",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Keyboard: Arrow+Enter selects destination",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Keyboard: Escape clears search",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Combobox ARIA wiring",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Favourite saved and listed",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Recent destination listed",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Favourites + recents persist across reload (localStorage)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Popular place card selects destination",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Destination dropdown selects + shows card",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Show on map recentres at zoom 18",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "OSM external link has coordinates + rel noopener",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Dark/light toggle persists after reload",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Fresher mode toggles body class and hides contributor tools",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Fresher mode persists",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Mobile menu opens (aria-expanded=true)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Mobile menu closes on Escape, focus returns",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Menu link navigates and closes menu",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "FAQ expands",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Back-to-top appears after scrolling",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Scroll progress bar updates",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Back-to-top returns to top",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Logo click returns to top/home",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Sticky header stays visible after scroll",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Floating contact opens dialog with mailto link",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Footer/contact email is clickable mailto",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Global search returns help article",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Global search returns places",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Global search result selects the place",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Privacy banner shown first visit",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Privacy banner dismissed persists",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Privacy details dialog opens",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Form: empty submit shows errors + aria-invalid",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Form: too-short message rejected",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Form: confirmation dialog appears",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Form: cancel leaves no success message",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Form: success state honest (draft prepared, copy fallback)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Form: reset clears fields and messages",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "GPS: live position + accuracy displayed",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "GPS: user marker drawn at the mocked fix",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "GPS: re-centre button appears",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "GPS: re-centre moves map to user",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "GPS: stop removes live marker/state",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Route: consent dialog names routing server before sending location",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Route: cancel sends nothing / no route",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Route: distance + walk time shown from service response",
+  "status": "PASS",
+  "detail": "DISTANCE\n640 m\nWALK TIME\n8 min"
+ },
+ {
+  "test": "Route: line drawn from returned geometry",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Route request uses real GPS start + Block 34 destination",
+  "status": "PASS",
+  "detail": "['https://routing.openstreetmap.de/routed-foot/route/v1/driving/75.7033,31.2559;75.70463,31.25162?overview=full&geometries=geojson&steps=true']"
+ },
+ {
+  "test": "Route: step list rendered",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Route: Start button swaps to Stop",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Navigation stop clears route UI + GPS",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Route from campus reference needs no GPS (no live GPS, no second consent prompt)",
+  "status": "PASS",
+  "detail": "GPS off"
+ },
+ {
+  "test": "Route failure: clear message, labelled straight-line estimate, no fake route",
+  "status": "PASS",
+  "detail": "Walking route service is unavailable (HTTP 503). Showing only the straight-line distance (dashed line, not a walking path); the time assumes about 5 km/h."
+ },
+ {
+  "test": "GPS permission denied handled (message, button reset)",
+  "status": "PASS",
+  "detail": "Location permission denied"
+ },
+ {
+  "test": "GPS poor accuracy flagged as weak signal",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Map load failure: error state with retry, no JS crash",
+  "status": "PASS",
+  "detail": "['Failed to load resource: net::ERR_FAILED', 'Failed to load resource: net::ERR_FAILED']"
+ },
+ {
+  "test": "Map failure: search/directory still works",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Map failure: destination card still opens with OSM link",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Storage blocked: app works, theme toggles in-session, warning shown",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 320px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "320>320"
+ },
+ {
+  "test": "Layout 320px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 360px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "360>360"
+ },
+ {
+  "test": "Layout 360px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 375px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "375>375"
+ },
+ {
+  "test": "Layout 375px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 390px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "390>390"
+ },
+ {
+  "test": "Layout 390px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 430px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "430>430"
+ },
+ {
+  "test": "Layout 430px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 768px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "768>768"
+ },
+ {
+  "test": "Layout 768px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 1024px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "1024>1024"
+ },
+ {
+  "test": "Layout 1024px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 1366px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "1366>1366"
+ },
+ {
+  "test": "Layout 1366px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Layout 1920px: no horizontal overflow",
+  "status": "PASS",
+  "detail": "1920>1920"
+ },
+ {
+  "test": "Layout 1920px: no tiny touch targets (<34px tall)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Internal anchors all resolve",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "External links use rel=noopener",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "No failed same-origin requests (missing images/assets)",
+  "status": "PASS",
+  "detail": "[]"
+ },
+ {
+  "test": "Meta: title, description, og:image, manifest, icons present",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Semantics: one h1, main landmark, html lang",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "All form controls have labels",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "All images have alt attribute",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "404.html renders",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "offline.html lists 79 places with geo: links",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Asset served: manifest.webmanifest",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Asset served: robots.txt",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Asset served: sw.js",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Asset served: icons/icon-192.png",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Asset served: icons/icon-maskable-512.png",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Asset served: assets/og-image.jpg",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "Manifest valid (name, start_url, 3 icons incl. maskable)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "PWA: service worker registers",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "test": "PWA: app shell + place list load offline",
+  "status": "PASS",
+  "detail": ""
+ }
+]

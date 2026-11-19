@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="180" viewBox="0 0 920 180" fill="none">
+  <g opacity=".17" stroke="#F5BE6A" stroke-width="1.4">
+    <path d="M530 180 A170 170 0 0 1 870 180"/>
+    <path d="M565 180 A135 135 0 0 1 835 180"/>
+    <path d="M600 180 A100 100 0 0 1 800 180"/>
+    <path d="M635 180 A65 65 0 0 1 765 180"/>
+    <path d="M700 20 L700 180 M675 38 L675 180 M725 38 L725 180"/>
+    <path d="M650 180 L650 83 L750 83 L750 180"/>
+    <path d="M642 83 L700 48 L758 83"/>
+    <path d="M665 100 H735 M665 117 H735 M665 134 H735"/>
+  </g>
+  <g opacity=".13" stroke="#FFFFFF" stroke-width="1.2">
+    <path d="M40 180 L130 42 L220 180 M78 180 L130 92 L182 180"/>
+    <path d="M130 42 V180 M100 128 H160 M92 148 H168"/>
+    <path d="M285 180 L350 76 L415 180 M315 180 L350 126 L385 180"/>
+    <path d="M350 76 V180 M330 145 H370"/>
+  </g>
+  <g opacity=".12" fill="#F5BE6A">
+    <path d="M470 180 L515 110 L560 180 Z"/>
+    <path d="M485 180 L515 133 L545 180 Z" fill="#FFFFFF"/>
+    <circle cx="830" cy="50" r="4"/>
+    <circle cx="852" cy="70" r="2.5"/>
+    <circle cx="805" cy="82" r="2.5"/>
+  </g>
+  <g opacity=".10" stroke="#FFFFFF" stroke-width="1">
+    <path d="M20 25 H220 M20 35 H170 M20 45 H120"/>
+    <path d="M780 130 H900 M810 140 H900 M840 150 H900"/>
+  </g>
+</svg>

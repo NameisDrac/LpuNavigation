@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LPU Campus Navigator — Find Your Way at Lovely Professional University</title>
+<meta name="description" content="Student-built campus guide for Lovely Professional University, Punjab. Search blocks, hostels, food courts and sports grounds, then follow a walking route on the map. DREAM BIG. FIND YOUR WAY.">
+<meta name="theme-color" content="#132d48">
+<meta name="color-scheme" content="light dark">
+<meta name="application-name" content="LPU Campus Navigator">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LPU Navigator">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LPU Campus Navigator">
+<meta property="og:title" content="LPU Campus Navigator — DREAM BIG. FIND YOUR WAY.">
+<meta property="og:description" content="Find blocks, hostels, food courts and sports grounds at Lovely Professional University and walk there with a live map. Independent student project.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LPU Campus Navigator: DREAM BIG. FIND YOUR WAY.">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og-image.jpg">
+<!-- canonical + og:url are added by tools/finalize-domain.js once the production domain is known -->
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="css/styles.css">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script defer src="data/places.js"></script>
+<script defer src="js/app.js"></script>
+<noscript><style>.js-only{display:none!important}.noscript-msg{display:block!important}</style></noscript>
+</head>
+<body>
+<a class="skip-link" href="#navigator">Skip to campus map and search</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <picture>
+    <source media="(max-width:700px)" srcset="assets/campus-header-photo-sm.webp">
+    <img class="header-bg" src="assets/campus-header-photo.webp" alt="" width="1900" height="420" decoding="async" fetchpriority="low">
+  </picture>
+  <div class="header-row">
+    <a class="brand" href="#top" id="logoLink" aria-label="LPU Campus Navigator — back to top">
+      <img src="assets/lpu-sunburst-mark-84.webp" srcset="assets/lpu-sunburst-mark-84.webp 1x, assets/lpu-sunburst-mark-120.webp 2x" width="56" height="56" alt="">
+      <span class="brand-copy"><strong>LPU Campus Navigator</strong><small>DREAM <em>BIG.</em> FIND YOUR WAY.</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#navigator">Navigator</a><a href="#help">Help</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn js-only" id="globalSearchBtn" type="button" aria-label="Search the site">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn js-only" id="themeBtn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn hamburger js-only" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="drawer" aria-hidden="true">
+  <div class="scrim" id="drawerScrim"></div>
+  <nav id="drawerNav" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="drawer-head"><strong>Menu</strong>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <a class="nav-link" href="#navigator">Campus navigator</a>
+    <a class="nav-link" href="#saved">Favourites &amp; recent</a>
+    <a class="nav-link" href="#help">Fresher help desk</a>
+    <a class="nav-link" href="#about">About this project</a>
+    <a class="nav-link" href="#contact">Contact &amp; report a wrong pin</a>
+    <div class="drawer-sep"></div>
+    <label class="switch-row" for="fresherToggle"><span>Fresher mode<small>Simpler screen, bigger buttons</small></span><input id="fresherToggle" type="checkbox" role="switch"></label>
+    <label class="switch-row" for="themeToggle"><span>Dark mode<small>Easier on the eyes at night</small></span><input id="themeToggle" type="checkbox" role="switch"></label>
+    <button class="btn btn-outline" id="installBtn" type="button" hidden>Install app</button>
+    <button class="btn btn-outline" id="privacyBtn" type="button">Privacy details</button>
+  </nav>
+</div>
+
+<main id="main">
+<section class="hero" aria-labelledby="heroTitle">
+  <span class="hero-motto">DREAM <b>BIG.</b> FIND YOUR WAY.</span>
+  <span class="eyebrow">Welcome to Lovely Professional University</span>
+  <h1 id="heroTitle">New to campus? <span>We’ll help you get there.</span></h1>
+  <p>Search any block, hostel, food court or sports ground, see it on the map and follow a walking route from where you stand.</p>
+  <p class="noscript-msg notice err" style="display:none">JavaScript is turned off. The map and search need JavaScript to work.</p>
+</section>
+
+<section class="navigator" id="navigator" aria-label="Campus navigator">
+  <div class="panel-col">
+    <div class="card search-box" id="searchCard">
+      <span class="eyebrow">Explore LPU</span>
+      <h2 id="searchTitle">Where do you want to go?</h2>
+      <div class="search-input-wrap" style="margin-top:12px">
+        <svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="placeSearch" type="search" role="combobox" aria-expanded="true" aria-controls="searchResults" aria-autocomplete="list" aria-label="Search blocks, hostels, food courts, sports grounds" placeholder="Try “Block 34”, “BH1”, “food”, “gym”…" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+        <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" hidden>×</button>
+      </div>
+      <div class="chips" id="filterChips" role="group" aria-label="Filter by category"></div>
+      <div class="dir-summary" id="dirSummary" aria-live="polite">Loading campus directory…</div>
+      <ul class="results" id="searchResults" role="listbox" aria-label="Matching places"></ul>
+    </div>
+
+    <div class="card" id="popularCard">
+      <h2>Popular places</h2>
+      <div class="quick-grid" id="popularGrid"></div>
+    </div>
+
+    <div class="card dest-card hidden" id="destCard" aria-live="polite"></div>
+
+    <div class="card" id="routeCard" aria-labelledby="routeTitle">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <h2 id="routeTitle">Walking route</h2><span class="tag ok">WALKING</span>
+      </div>
+      <label for="fromPlace">From</label>
+      <select id="fromPlace"><option value="my-location">My current location (GPS)</option><option value="campus-center">LPU campus area (approx.)</option></select>
+      <label for="toPlace">To</label>
+      <select id="toPlace"><option value="">Choose a destination</option></select>
+      <div class="btn-row">
+        <button id="routeBtn" class="btn btn-primary wide" type="button">Start navigation</button>
+        <button id="stopBtn" class="btn btn-outline wide" type="button" hidden>Stop navigation</button>
+      </div>
+      <div class="status" id="routeStatus" role="status">Choose a destination to plan a route.</div>
+      <div class="stat-row hidden" id="routeStats"><div class="stat"><small>Distance</small><strong id="statDist">–</strong></div><div class="stat"><small>Walk time</small><strong id="statTime">–</strong></div></div>
+      <div class="progress hidden" id="progressWrap" role="progressbar" aria-label="Route progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="progressBar"></i></div>
+      <ol class="route-steps" id="routeSteps"></ol>
+      <p class="muted" style="font-size:.78rem;margin:10px 0 0">Routes are estimates from OpenStreetMap walking data and may not know about campus-only shortcuts or closed paths. Follow campus signs and access rules.</p>
+    </div>
+
+    <div class="card" id="saved">
+      <h2>Favourites &amp; recent</h2>
+      <p class="muted" id="storageNote" hidden style="font-size:.82rem">Your browser is blocking storage, so favourites and recent places will be forgotten when you close this tab.</p>
+      <span class="label">Favourites</span><ul class="saved-list" id="favList"></ul>
+      <span class="label">Recently visited</span><ul class="saved-list" id="recentList"></ul>
+    </div>
+  </div>
+
+  <div class="map-col">
+    <div class="card map-card">
+      <div class="map-head"><div><strong id="mapTitle">Campus map</strong><span id="mapSubtitle">Choose a destination to see it here</span></div>
+        <button id="resetMapBtn" class="btn btn-sm" type="button">Reset map</button></div>
+      <div class="map-wrap">
+        <div id="map" role="application" aria-label="Interactive campus map. Use the search list for an accessible alternative."></div>
+        <div class="map-overlay">
+          <button class="map-fab" id="locateBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg><span id="locateLabel">Use my location</span></button>
+          <button class="map-fab hidden" id="recenterBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 21 3l-8 18-2-8z"/></svg>Re-centre</button>
+          <span class="gps-pill" id="gpsStatus" role="status">GPS not started</span>
+        </div>
+        <div class="map-state" id="mapState"><div><div class="spinner" aria-hidden="true"></div><strong>Loading map…</strong></div></div>
+      </div>
+      <div class="map-legend" aria-label="Map legend">
+        <span><i class="dot pin"></i>Campus place (approximate pin)</span><span><i class="dot dest"></i>Destination</span><span><i class="dot me"></i>You</span><span><i class="dot bld"></i>OSM building</span><span><i class="dot osm"></i>OSM place</span>
+      </div>
+      <details class="map-tools hide-fresher" id="mapTools">
+        <summary>Map layers &amp; live OpenStreetMap data</summary>
+        <p class="muted" style="font-size:.85rem">Optionally load extra building outlines and facilities from OpenStreetMap. This sends a request to a public community server (Overpass) and may include places just outside campus.</p>
+        <button id="loadOsmBtn" class="btn btn-primary" type="button">Load campus map data</button>
+        <label class="check"><input id="showBuildings" type="checkbox" checked> Building outlines</label>
+        <label class="check"><input id="showPois" type="checkbox" checked> Places &amp; facilities</label>
+        <div class="status" id="osmStatus" role="status">OpenStreetMap data has not been loaded.</div>
+      </details>
+    </div>
+    <div class="card hide-fresher" id="studio">
+      <details id="studioDetails">
+        <summary style="cursor:pointer;font-weight:750;min-height:44px;display:flex;align-items:center">Contributor tools — help improve the map (advanced)</summary>
+        <div id="studioBody"><p class="muted">Loading tools…</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="help" aria-labelledby="helpTitle">
+  <h2 id="helpTitle">Fresher help desk</h2>
+  <div id="faqList">
+    <details class="faq"><summary>How do I find Block 34?</summary><div class="faq-body"><p>Type “Block 34” (or just “34”) in the search box and choose it. The pin is a map reference point supplied by the project owner — confirm the entrance with campus signs.</p></div></details>
+    <details class="faq"><summary>How does the walking route work?</summary><div class="faq-body"><p>Pick a destination, then press “Start navigation”. The app asks your browser for your location, sends your position and the destination to a public OpenStreetMap routing server, and draws the walking path it returns. If routing is unavailable it tells you, and can show a clearly labelled straight-line distance instead.</p></div></details>
+    <details class="faq"><summary>Can I trust every route?</summary><div class="faq-body"><p>No. Routes depend on OpenStreetMap data and a community routing service. Indoor routes, campus-only shortcuts and temporary closures are not known. Check signs and follow university access rules.</p></div></details>
+    <details class="faq"><summary>Why does my location look wrong or jump around?</summary><div class="faq-body"><p>GPS can be weak indoors, between tall buildings or on a laptop. The map shows an accuracy circle and warns you when the signal is poor. Step outside or near a window and wait a few seconds.</p></div></details>
+    <details class="faq"><summary>Is my location stored or shared?</summary><div class="faq-body"><p>Your position stays in your browser. It is only sent to the routing server when you start a route, and only after you confirm. This site has no accounts, no analytics and no cookies.</p></div></details>
+    <details class="faq"><summary>What if a building is missing or a pin is wrong?</summary><div class="faq-body"><p>Many numbered blocks are listed but do not have verified coordinates yet. Use the “Report a wrong or missing place” form below, which prepares an email to the project owner.</p></div></details>
+    <details class="faq"><summary>Does it work offline?</summary><div class="faq-body"><p>If you installed the app or visited before, the page and the place list open offline. Map tiles, routes and live OpenStreetMap data need internet.</p></div></details>
+    <details class="faq"><summary>Does this replace UMS or official help desks?</summary><div class="faq-body"><p>No. This is an independent student project, not an official LPU service. Use official channels for timetable, attendance, hostel, fee and other administrative matters.</p></div></details>
+  </div>
+</section>
+
+<section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="grid-2">
+    <div class="card">
+      <span class="eyebrow">About this project</span><h2 id="aboutTitle">Project details</h2>
+      <dl class="facts" style="margin-top:14px">
+        <div><dt>Student name</dt><dd>D. Saitej Reddy</dd></div>
+        <div><dt>Section</dt><dd>K3P26TB</dd></div>
+        <div><dt>Course</dt><dd>Design thinking (int335)</dd></div>
+        <div><dt>Project</dt><dd>LPU Campus Navigator </dd></div>
+        <div><dt>Faculty</dt><dd>Dr. Sarabmeet Singh</dd></div>
+        <div><dt>Site updated</dt><dd><time datetime="2026-11-19">19 Nov 2026</time></dd></div>
+        <div><dt>Campus data supplied</dt><dd><time datetime="2026-11-07">7 Nov 2026</time></dd></div>
+      </dl>
+    </div>
+    <div class="card" id="contact">
+      <span class="eyebrow">Questions or suggestions?</span><h2>Contact the project owner</h2>
+      <p class="muted" style="margin-top:8px">Found a missing place or an incorrect pin? Send a note.</p>
+      <a class="contact-email" href="mailto:devreddy0423@gmail.com?subject=LPU%20Campus%20Navigator"><span aria-hidden="true">✉</span><span><small>EMAIL THE PROJECT OWNER</small><strong>devreddy0423@gmail.com</strong></span></a>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px" id="reportCard">
+    <h2>Report a wrong or missing place</h2>
+    <p class="muted">This form prepares an email in your own email app. Nothing is sent from this website.</p>
+    <form id="reportForm" novalidate>
+      <label for="rfTopic">What is this about?</label>
+      <select id="rfTopic" name="topic" required><option value="">Select…</option><option>Wrong pin location</option><option>Missing place</option><option>Suggestion</option><option>Something else</option></select>
+      <div class="field-error" id="rfTopicErr"></div>
+      <label for="rfPlace">Place name <span class="muted">(optional)</span></label>
+      <input id="rfPlace" name="place" type="text" maxlength="120" autocomplete="off">
+      <label for="rfName">Your name <span class="muted">(optional)</span></label>
+      <input id="rfName" name="name" type="text" maxlength="80" autocomplete="name">
+      <label for="rfMsg">Message</label>
+      <textarea id="rfMsg" name="message" maxlength="1000" required aria-describedby="rfMsgErr rfCount"></textarea>
+      <div class="field-error" id="rfMsgErr"></div><div class="count" id="rfCount">0 / 1000</div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Prepare email</button><button class="btn btn-outline" type="reset" id="rfReset">Clear</button></div>
+      <div class="form-summary" id="rfStatus" role="status" tabindex="-1"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-in">
+    <div><div class="motto">DREAM <em>BIG.</em> FIND YOUR WAY.</div>
+      <small>LPU Campus Navigator · Release 3.0<br>An independent student project. Not an official Lovely Professional University service. Maps © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</small></div>
+    <div class="footer-links" role="list"><a href="#navigator">Navigator</a><a href="#help">Help</a><a href="#about">About</a><a href="#contact">Contact</a><button type="button" id="privacyBtn2">Privacy</button></div>
+    <small>Last updated <time datetime="2026-11-19">19 November 2026</time><br>Campus coordinates are reference points and not independently surveyed.</small>
+  </div>
+</footer>
+
+<button class="btn btn-primary fab-contact js-only" id="fabContact" type="button" aria-haspopup="dialog">✉ Contact</button>
+<button class="to-top js-only" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+<div class="sr-only" id="srStatus" role="status" aria-live="polite"></div>
+
+<div class="banner hidden" id="privacyBanner" role="region" aria-label="Privacy notice">
+  <p><strong>Privacy:</strong> no cookies, no analytics. Your theme, favourites and recent places are saved only in this browser. Your location is used only on your device unless you start a route.</p>
+  <div class="btn-row"><button class="btn btn-primary" id="privacyOk" type="button">Got it</button><button class="btn btn-outline" id="privacyMore" type="button">Details</button></div>
+</div>
+
+<dialog id="dlgGeneric" aria-labelledby="dlgTitle"><div class="dlg"><h2 id="dlgTitle"></h2><div id="dlgBody"></div><div class="btn-row"><button class="btn btn-primary" id="dlgOk" type="button">OK</button><button class="btn btn-outline" id="dlgCancel" type="button">Cancel</button></div></div></dialog>
+
+<dialog id="dlgPrivacy" aria-labelledby="privTitle"><div class="dlg"><h2 id="privTitle">Privacy details</h2>
+  <ul>
+    <li>No cookies, accounts, analytics or advertising.</li>
+    <li>Theme, fresher mode, favourites and recent places are saved in your browser’s localStorage. Clear your browser data to remove them.</li>
+    <li>Your GPS position is read by your browser only after you allow it. It is shown on the map on your device.</li>
+    <li>When you start a route, your position (or the campus reference point) and the destination coordinates are sent to <b>routing.openstreetmap.de</b>, a public community service. They are not sent anywhere else by this site.</li>
+    <li>Map tiles are loaded from OpenStreetMap (or Esri for satellite), which receive your IP address and the map area you view. Optional live map data is requested from Overpass servers.</li>
+    <li>The “Prepare email” form opens your own email app; the site itself sends nothing.</li>
+  </ul><div class="btn-row"><button class="btn btn-primary" id="privClose" type="button">Close</button></div></div></dialog>
+
+<dialog id="dlgContact" aria-labelledby="ctTitle"><div class="dlg"><h2 id="ctTitle">Contact</h2>
+  <p class="muted">Email the project owner, or report a wrong pin.</p>
+  <div class="btn-row"><a class="btn btn-primary wide" href="mailto:devreddy0423@gmail.com?subject=LPU%20Campus%20Navigator">Open email app</a>
+  <button class="btn wide" id="ctCopy" type="button">Copy email address</button>
+  <a class="btn wide" href="#reportCard" id="ctReport">Report a wrong or missing place</a>
+  <button class="btn btn-outline wide" id="ctClose" type="button">Close</button></div></div></dialog>
+
+<dialog id="dlgSearch" aria-labelledby="gsTitle"><div class="dlg"><h2 id="gsTitle">Search the site</h2>
+  <label for="gsInput" class="sr-only">Search places and help articles</label>
+  <input id="gsInput" type="search" placeholder="Places, hostels, help topics…" autocomplete="off">
+  <ul class="saved-list" id="gsResults" aria-live="polite"></ul>
+  <div class="btn-row"><button class="btn btn-outline" id="gsClose" type="button">Close</button></div></div></dialog>
+
+<dialog id="dlgIos" aria-labelledby="iosTitle"><div class="dlg"><h2 id="iosTitle">Install on iPhone or iPad</h2>
+  <p>Open this page in Safari, tap the <b>Share</b> button, then choose <b>Add to Home Screen</b>.</p>
+  <div class="btn-row"><button class="btn btn-primary" id="iosClose" type="button">Got it</button></div></div></dialog>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Netlify: publish the pre-built `site` folder (no build step needed).
+[build]
+  publish = "site"
+# Headers (CSP, caching, security) live in site/_headers, which Netlify and Cloudflare Pages both read.

@@ -1,0 +1,9 @@
+Brand mark note
+---------------
+This public student-project edition uses a custom typographic "LPU" project mark.
+It is not the official Lovely Professional University seal or logo.
+
+LPU's official media page states that its logo is copyrighted and cautions against
+unauthorised use. If you have written permission or an approved official logo asset,
+place the authorised file in an assets folder and update the brand mark in index.html.
+Do not assume that a logo visible on a public webpage is free to reuse.

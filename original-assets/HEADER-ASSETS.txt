@@ -1,0 +1,7 @@
+Header image layers
+--------------------
+- assets/lpu-sunburst-mark.png: orange sunburst isolated from the user's supplied LPU logo image; white circular text ring removed.
+- assets/campus-header-photo.webp: campus-building photo panorama placed as an actual HTML image element spanning the full header.
+- assets/header-campus-motif.svg: subtle architecture/ray illustration layered through the header.
+
+The header photo now uses a real <img> positioned behind a translucent navy overlay. This avoids pseudo-element stacking issues that could make the background disappear. The logo is larger, has no white tile/border, and uses the standalone orange mark.

@@ -1,0 +1,12 @@
+{
+  "name": "lpu-campus-navigator",
+  "version": "3.0.0",
+  "private": true,
+  "description": "LPU Campus Navigator — static site. No runtime dependencies.",
+  "scripts": {
+    "build": "node tools/build.js",
+    "serve": "python3 -m http.server 8080 --directory site",
+    "test": "python3 tests/run.py",
+    "finalize": "node tools/finalize-domain.js"
+  }
+}
