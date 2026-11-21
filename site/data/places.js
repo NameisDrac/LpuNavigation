@@ -126,7 +126,7 @@ CAMPUS_PLACES.forEach((place) => {
 const USER_SUPPLIED_CAMPUS_FACILITIES = [
   { id: "lpu-main-parking", name: "LPU Main Parking", category: "Gate / parking", lat: 31.25289553392606, lng: 75.7057074257848 },
   { id: "robo-park", name: "Robo Park LPU", category: "Sports / ground", lat: 31.25348028186916, lng: 75.7032755637416 },
-  { id: "school-biosciences", name: "School of Biosciences", category: "Academic block", lat: 31.25323059008924, lng: 75.70376868185426 },
+  { id: "school-biosciences", name: "School of Biosciences", category: "Academic block", lat:31.25274529311791, lng: 75.70363068080992 },
   { id: "lpu-helipad", name: "LPU Helipad", category: "Other", lat: 31.25436554741007, lng: 75.70301762502974 },
   { id: "school-education", name: "School of Education", category: "Academic block", lat: 31.255176371154548, lng: 75.70341160418087 },
   { id: "school-hotel-management", name: "LPU School of Hotel Management", category: "Academic block", lat: 31.255653552864757, lng: 75.70433863872012 },
